@@ -1,0 +1,122 @@
+<div class="container">
+  <mat-card class="form-card mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon class="header-icon">add_circle</mat-icon>
+        Add New Book
+      </mat-card-title>
+      <mat-card-subtitle>Fill in the book details</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form (ngSubmit)="saveBook()" class="book-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            [(ngModel)]="book.title"
+            name="title"
+            required
+            placeholder="Enter book title"
+            minlength="2"
+            maxlength="100"
+            #titleInput="ngModel"
+          />
+          <mat-icon matSuffix>title</mat-icon>
+          <mat-hint>Required field (2-100 characters)</mat-hint>
+          <mat-error
+            *ngIf="
+              titleInput.invalid && (titleInput.dirty || titleInput.touched)
+            "
+          >
+            Please enter a valid title (2-100 characters)
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Author</mat-label>
+          <input
+            matInput
+            [(ngModel)]="book.author"
+            name="author"
+            required
+            placeholder="Enter author name"
+            minlength="2"
+            maxlength="50"
+            #authorInput="ngModel"
+          />
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-hint>Required field (2-50 characters)</mat-hint>
+          <mat-error
+            *ngIf="
+              authorInput.invalid && (authorInput.dirty || authorInput.touched)
+            "
+          >
+            Please enter a valid author name (2-50 characters)
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>ISBN</mat-label>
+          <input
+            matInput
+            [(ngModel)]="book.isbn"
+            name="isbn"
+            required
+            placeholder="Enter ISBN number"
+            #isbnInput="ngModel"
+          />
+          <mat-icon matSuffix>numbers</mat-icon>
+          <mat-hint>Enter the book's ISBN number</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Publication Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="book.publicationDate"
+            name="publicationDate"
+            [min]="minDate"
+            [max]="maxDate"
+            required
+            #dateInput="ngModel"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="dateInput.invalid && (dateInput.dirty || dateInput.touched)"
+          >
+            Please select a valid date between {{ minDate | date }} and
+            {{ maxDate | date }}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!isFormValid() || isSubmitting"
+            aria-label="Save book"
+          >
+            <mat-icon>save</mat-icon>
+            {{ isSubmitting ? "Saving..." : "Save" }}
+          </button>
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="navigateToList()"
+            class="cancel-button"
+            aria-label="Cancel and go back"
+          >
+            <mat-icon>cancel</mat-icon> Cancel
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

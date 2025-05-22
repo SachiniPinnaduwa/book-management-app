@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="header-container">
+    <h2 class="header-title">
+      <mat-icon class="header-icon">collections_bookmark</mat-icon>
+      Book List
+    </h2>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addBook()"
+      aria-label="Add new book"
+    >
+      <mat-icon>add</mat-icon> Add New Book
+    </button>
+  </div>
+
+  <mat-progress-bar
+    mode="indeterminate"
+    *ngIf="isLoading"
+    aria-label="Loading books"
+  >
+  </mat-progress-bar>
+
+  <div *ngIf="errorMessage" class="error-message" role="alert">
+    <mat-icon>error</mat-icon> {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage">
+    <table
+      mat-table
+      [dataSource]="books"
+      class="mat-elevation-z8"
+      aria-label="Books list"
+    >
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let book">{{ book.title }}</td>
+      </ng-container>
+
+      <!-- Author Column -->
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef>Author</th>
+        <td mat-cell *matCellDef="let book">{{ book.author }}</td>
+      </ng-container>
+
+      <!-- ISBN Column -->
+      <ng-container matColumnDef="isbn">
+        <th mat-header-cell *matHeaderCellDef>ISBN</th>
+        <td mat-cell *matCellDef="let book">{{ book.isbn }}</td>
+      </ng-container>
+
+      <!-- Publication Date Column -->
+      <ng-container matColumnDef="publicationDate">
+        <th mat-header-cell *matHeaderCellDef>Publication Date</th>
+        <td mat-cell *matCellDef="let book">
+          {{ formatDate(book.publicationDate) }}
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let book">
+          <button
+            mat-icon-button
+            color="primary"
+            [routerLink]="['/books/details', book.id]"
+            matTooltip="View Details"
+            aria-label="View book details"
+          >
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="accent"
+            [routerLink]="['/books/edit', book.id]"
+            matTooltip="Edit"
+            aria-label="Edit book"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="deleteBook(book.id)"
+            matTooltip="Delete"
+            aria-label="Delete book"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        [attr.aria-label]="'Book: ' + row.title"
+      ></tr>
+    </table>
+
+    <div *ngIf="books.length === 0" class="no-books">
+      <mat-icon>book</mat-icon> No books found. Add a book to get started!
+    </div>
+  </div>
+</div>

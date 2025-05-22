@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "DXKJvAX4C9mejheb1u/sAMnNbDAFLWNMKkNfLaWEhxw=",
+  "Source": "BookManagementApp",
+  "BasePath": "_content/BookManagementApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

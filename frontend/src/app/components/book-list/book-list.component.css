@@ -1,0 +1,51 @@
+.container {
+  padding: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-container h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-icon {
+  color: #2070c9;
+  font-size: 28px;
+  height: 28px;
+  width: 28px;
+}
+
+.error-message {
+  color: #f44336;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.no-books {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-column-actions {
+  width: 180px;
+  text-align: center;
+}
+
+.mat-elevation-z8 {
+  margin-top: 32px;
+}

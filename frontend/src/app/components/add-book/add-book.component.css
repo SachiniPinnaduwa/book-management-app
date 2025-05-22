@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 600px;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.card-header {
+  margin-bottom: 24px;
+}
+
+mat-card-content {
+  padding-top: 20px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel-button {
+  margin-left: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}

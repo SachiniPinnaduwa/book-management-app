@@ -1,0 +1,73 @@
+.container {
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-container .header-title {
+  display: flex;
+  align-items: center;
+}
+
+.header-container .header-title .header-icon {
+  margin-right: 12px;
+  color: #3f51b5; /* indigo-500 */
+}
+
+.error-message {
+  color: #f44336; /* red-500 */
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: #ffebee; /* red-50 */
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.error-message mat-icon {
+  margin-right: 8px;
+}
+
+.book-card {
+  padding: 16px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.detail-row .detail-icon {
+  margin-right: 16px;
+  color: #9e9e9e; /* grey-500 */
+}
+
+.detail-row .detail-label {
+  font-size: 12px;
+  color: #9e9e9e; /* grey-500 */
+}
+
+.detail-row .detail-value {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 16px;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

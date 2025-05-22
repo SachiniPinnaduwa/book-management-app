@@ -1,0 +1,111 @@
+<div class="container">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon class="header-icon">edit</mat-icon> Edit Book
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
+    <div *ngIf="errorMessage" class="error-message">
+      <mat-icon>error</mat-icon> {{ errorMessage }}
+    </div>
+
+    <mat-card-content *ngIf="!isLoading">
+      <form (ngSubmit)="updateBook()" class="book-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            [(ngModel)]="book.title"
+            name="title"
+            required
+            placeholder="Enter book title"
+            (input)="hasUnsavedChanges = true"
+            #titleInput="ngModel"
+          />
+          <mat-icon matSuffix>title</mat-icon>
+          <mat-hint>Required field</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Author</mat-label>
+          <input
+            matInput
+            [(ngModel)]="book.author"
+            name="author"
+            required
+            placeholder="Enter author name"
+            (input)="hasUnsavedChanges = true"
+            #authorInput="ngModel"
+          />
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-hint>Required field</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>ISBN</mat-label>
+          <input
+            matInput
+            [(ngModel)]="book.isbn"
+            name="isbn"
+            required
+            placeholder="Enter ISBN number"
+            (input)="hasUnsavedChanges = true"
+            #isbnInput="ngModel"
+          />
+          <mat-icon matSuffix>numbers</mat-icon>
+          <mat-hint>Format: 978-3-16-148410-0</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Publication Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="book.publicationDate"
+            name="publicationDate"
+            [min]="minDate"
+            [max]="maxDate"
+            required
+            (dateChange)="hasUnsavedChanges = true"
+            #dateInput="ngModel"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="
+              !book.title ||
+              !book.author ||
+              !book.isbn ||
+              isLoading ||
+              isSubmitting
+            "
+          >
+            <mat-icon>save</mat-icon>
+            {{ isSubmitting ? "Saving..." : "Update" }}
+          </button>
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="navigateToList()"
+            class="cancel-button"
+            [disabled]="isLoading"
+          >
+            <mat-icon>cancel</mat-icon> Cancel
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

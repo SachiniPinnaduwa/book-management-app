@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Book Management</a>
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/books" routerLinkActive="active"
+        >Books</a
+      >
+      <a class="nav-link" routerLink="/books/add" routerLinkActive="active"
+        >Add Book</a
+      >
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
