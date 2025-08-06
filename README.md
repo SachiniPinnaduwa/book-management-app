@@ -40,7 +40,7 @@ A modern full-stack application for managing book collections with a responsive 
 ---
 
 ## Demo Video 🎥
-
+![DemoVideo](Screen_Record.mp4)
 
 ---
 
