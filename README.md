@@ -23,19 +23,19 @@ A modern full-stack application for managing book collections with a responsive 
 ## Screenshots 🖼️ 
 
 ### Book List
-![BookList](screenshots/bookList.png)
+![BookList](bookList.png)
 
 ### Add Book
-![AddBook](screenshots/addBook.png)
+![AddBook](addBook.png)
 
 ### View a book
-![ViewBoo](screenshots/viewBook.png)
+![ViewBook](viewBook.png)
 
 ### Edit Book
-![EditBook](screenshots/editBook.png)
+![EditBook](editBook.png)
 
 ### Delete Book
-![DeleteBook](screenshots/deleteBook.png)
+![DeleteBook](deleteBook.png)
 
 ---
 
